@@ -1,0 +1,15 @@
+{
+  "name": "ws-npmi",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "ws-npmi": "ws-npmi.js"
+  },
+  "keywords": [],
+  "author": "Lenar Zakirov",
+  "license": "ISC",
+  "dependencies": {
+    "download": "^8.0.0",
+    "url-parse": "^1.4.7"
+  }
+}
