@@ -52,6 +52,7 @@ async function downloadPackages(downloadDependencies) {
         const gitPath = urlParsed.pathname.toLowerCase().replace(/\.git$/, '');
         const repoName = path.basename(gitPath);
         const gitUrl = urlParsed.origin + gitPath +
+            // Разные пути к архиву в зависимости от того, это гитхаб или гитлаб
             (urlParsed.host === 'github.com' ? '/archive/' : `/-/archive/${branchId}/${repoName}-`) +
             `${branchId}.zip`;
         const downloadDirName = `${repoName}-${branchId}`;
@@ -82,6 +83,6 @@ async function renameDirs(dirsForRename) {
                 fs.renameSync(NODE_DIR + srcDir, NODE_DIR + dstDir);
             }
             resolve();
-        }, 5000);
+        }, 10000);
     });
 }

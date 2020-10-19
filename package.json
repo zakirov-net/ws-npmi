@@ -5,6 +5,10 @@
   "bin": {
     "ws-npmi": "ws-npmi.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zakirov-net/ws-npmi"
+  },
   "keywords": [],
   "author": "Lenar Zakirov",
   "license": "ISC",
