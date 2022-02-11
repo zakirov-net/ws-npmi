@@ -33,6 +33,8 @@ async function main() {
         await downloadPackages(downloadDependencies);
     }
     execCommand('npm run postinstall');
+    // Отменяем ненужные изменения файлов.
+    execCommand('git checkout HEAD -- tsconfig.json tslint.json');
     console.log('Installation complete.')
 }
 
