@@ -10,6 +10,11 @@ const UrlParse = require('url-parse');
 // Пакеты, которые в любом случае ставятся через npm install
 const PACKAGES_FOR_NPM = ['saby-typescript', 'saby-builder', 'saby-units'];
 
+const SYMLINKS = [
+    // Для переменных в less-файлах
+    {target: '../wasaby-controls/Controls-default-theme', path:'Controls-default-theme', type: 'dir'}
+];
+
 const NODE_DIR = process.cwd() + '/node_modules/';
 
 const packageJson = require(process.cwd() + '/package.json');
@@ -35,6 +40,10 @@ async function main() {
     execCommand('npm run postinstall');
     // Отменяем ненужные изменения файлов.
     execCommand('git checkout HEAD -- tsconfig.json tslint.json');
+    for (const {target, path, type} of SYMLINKS) {
+        fs.symlinkSync(target, path, type);
+        console.log(`Symlink created: ${path} => ${target}`);
+    }
     console.log('Installation complete.')
 }
 
